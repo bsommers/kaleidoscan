@@ -1,0 +1,6 @@
+{"errors": [], "generated_at": "2026-01-01T00:00:00Z",
+ "metrics": {"_totals": {"loc": 5}, "@ROOT@/app.py": {"loc": 5}},
+ "results": [{"code": "x", "col_offset": 4, "filename": "@ROOT@/app.py", "issue_confidence": "HIGH",
+   "issue_cwe": {"id": 78, "link": "https://cwe.mitre.org/data/definitions/78.html"},
+   "issue_severity": "HIGH", "issue_text": "Starting a process with a shell",
+   "line_number": 5, "line_range": [5], "more_info": "https://bandit.readthedocs.io/", "test_id": "B605", "test_name": "start_process_with_a_shell"}]}

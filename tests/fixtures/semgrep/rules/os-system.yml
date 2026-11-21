@@ -1,0 +1,7 @@
+rules:
+- id: os-system-concat
+  languages: [python]
+  severity: ERROR
+  message: os.system with concatenated arg
+  metadata: {cwe: ["CWE-78: OS Command Injection"]}
+  pattern: os.system($X + $Y)
