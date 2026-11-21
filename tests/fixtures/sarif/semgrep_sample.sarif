@@ -1,0 +1,11 @@
+{"version":"2.1.0","runs":[{"tool":{"driver":{"name":"semgrep","version":"1.0","rules":[
+ {"id":"py.sqli","properties":{"tags":["external/cwe/cwe-89","security"]}},
+ {"id":"py.abc","properties":{"security-severity":"9.8"}}]}},
+ "invocations":[{"startTimeUtc":"2026-01-01T00:00:00Z","endTimeUtc":"2026-01-01T00:00:05Z","executionSuccessful":true}],
+ "results":[
+ {"ruleId":"py.sqli","level":"error","message":{"text":"SQL injection"},
+  "locations":[{"physicalLocation":{"artifactLocation":{"uri":"file:///work/proj/app/db.py"},"region":{"startLine":12,"endLine":12,"snippet":{"text":"cur.execute(q  + x)"}}}}],
+  "codeFlows":[{"threadFlows":[{"locations":[{"location":{"physicalLocation":{"artifactLocation":{"uri":"app/views.py"},"region":{"startLine":3}},"message":{"text":"source"}}}]}]}]},
+ {"ruleId":"py.abc","message":{"text":"critical thing"},
+  "locations":[{"physicalLocation":{"artifactLocation":{"uri":"app/a.py"},"region":{"startLine":1}}}]}
+ ]}]}
