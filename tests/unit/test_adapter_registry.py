@@ -6,7 +6,7 @@ from kaleidoscan.types import ScannerInfo
 pytestmark = pytest.mark.unit
 
 EXPECTED = {"flowscope", "semgrep", "bandit", "gosec", "flawfinder", "bearer", "codeql",
-            "binary-analysis", "llm-agent-review"}
+            "binary-analysis", "llm-agent-review", "gitleaks", "osv-scanner"}
 
 
 def test_all_baseline_scanners_registered():

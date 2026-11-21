@@ -10,12 +10,15 @@ from kaleidoscan.adapters.binary_ingest import BinaryIngestAdapter
 from kaleidoscan.adapters.codeql import CodeqlAdapter
 from kaleidoscan.adapters.flawfinder import FlawfinderAdapter
 from kaleidoscan.adapters.flowscope import FlowscopeAdapter
+from kaleidoscan.adapters.gitleaks import GitleaksAdapter
 from kaleidoscan.adapters.gosec import GosecAdapter
+from kaleidoscan.adapters.osv_scanner import OsvScannerAdapter
 from kaleidoscan.adapters.semgrep import SemgrepAdapter
 
 BUILTIN = {a.info.id: a for a in (
     FlowscopeAdapter, SemgrepAdapter, BanditAdapter, GosecAdapter, FlawfinderAdapter,
-    BearerAdapter, CodeqlAdapter, BinaryIngestAdapter, AgentIngestAdapter)}
+    BearerAdapter, CodeqlAdapter, BinaryIngestAdapter, AgentIngestAdapter,
+    GitleaksAdapter, OsvScannerAdapter)}
 
 
 def registry() -> dict[str, type]:
