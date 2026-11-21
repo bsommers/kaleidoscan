@@ -1,0 +1,289 @@
+{
+  "counts": {
+    "critical": 1,
+    "high": 3,
+    "info": 0,
+    "low": 2,
+    "medium": 2,
+    "total": 8
+  },
+  "dynamic": null,
+  "findings": [
+    {
+      "code_flow": [
+        {
+          "line": 14,
+          "note": "source: request.args['id']",
+          "path": "app/views.py"
+        },
+        {
+          "line": 42,
+          "note": "propagates through build_query()",
+          "path": "app/db.py"
+        },
+        {
+          "line": 47,
+          "note": "sink: cursor.execute(query)",
+          "path": "app/db.py"
+        }
+      ],
+      "confidence": "high",
+      "cwe": [
+        "CWE-89"
+      ],
+      "fingerprint": "a1b2c3d4e5f60001",
+      "location": {
+        "end_line": 47,
+        "path": "app/db.py",
+        "start_line": 47
+      },
+      "message": "SQL injection: user input reaches cursor.execute()",
+      "rule_ids": {
+        "flowscope": "FS-PY-SQLI-001",
+        "semgrep": "python.django.security.injection.sql"
+      },
+      "scanner_ids": [
+        "flowscope",
+        "semgrep"
+      ],
+      "secret_redacted": false,
+      "severity": "critical"
+    },
+    {
+      "code_flow": [
+        {
+          "line": 9,
+          "note": "source: request.files['f'].filename",
+          "path": "app/upload.py"
+        },
+        {
+          "line": 21,
+          "note": "sink: open(os.path.join(root, name), 'wb')",
+          "path": "app/upload.py"
+        }
+      ],
+      "confidence": "medium",
+      "cwe": [
+        "CWE-22"
+      ],
+      "fingerprint": "a1b2c3d4e5f60002",
+      "location": {
+        "end_line": 21,
+        "path": "app/upload.py",
+        "start_line": 21
+      },
+      "message": "Path traversal via uploaded filename",
+      "rule_ids": {
+        "flowscope": "FS-PY-PATHTRAV-002"
+      },
+      "scanner_ids": [
+        "flowscope"
+      ],
+      "secret_redacted": false,
+      "severity": "high"
+    },
+    {
+      "code_flow": null,
+      "confidence": "high",
+      "cwe": [
+        "CWE-78"
+      ],
+      "fingerprint": "a1b2c3d4e5f60003",
+      "location": {
+        "end_line": 8,
+        "path": "tools/run.py",
+        "start_line": 8
+      },
+      "message": "subprocess call with shell=True",
+      "rule_ids": {
+        "bandit": "B602",
+        "semgrep": "python.lang.security.audit.subprocess-shell-true"
+      },
+      "scanner_ids": [
+        "bandit",
+        "semgrep"
+      ],
+      "secret_redacted": false,
+      "severity": "high"
+    },
+    {
+      "code_flow": null,
+      "confidence": "high",
+      "cwe": [
+        "CWE-327"
+      ],
+      "fingerprint": "a1b2c3d4e5f60004",
+      "location": {
+        "end_line": 30,
+        "path": "app/auth.py",
+        "start_line": 30
+      },
+      "message": "Use of weak MD5 hash",
+      "rule_ids": {
+        "bandit": "B303"
+      },
+      "scanner_ids": [
+        "bandit"
+      ],
+      "secret_redacted": false,
+      "severity": "medium"
+    },
+    {
+      "code_flow": null,
+      "confidence": "medium",
+      "cwe": [
+        "CWE-489"
+      ],
+      "fingerprint": "a1b2c3d4e5f60005",
+      "location": {
+        "end_line": 5,
+        "path": "app/main.py",
+        "start_line": 5
+      },
+      "message": "Flask app runs with debug=True",
+      "rule_ids": {
+        "semgrep": "python.flask.security.audit.debug-enabled"
+      },
+      "scanner_ids": [
+        "semgrep"
+      ],
+      "secret_redacted": false,
+      "severity": "medium"
+    },
+    {
+      "code_flow": null,
+      "confidence": "high",
+      "cwe": [
+        "CWE-798"
+      ],
+      "fingerprint": "a1b2c3d4e5f60006",
+      "location": {
+        "end_line": 12,
+        "path": "config/settings.py",
+        "start_line": 12
+      },
+      "message": "Hardcoded API key (value redacted)",
+      "rule_ids": {
+        "gitleaks": "generic-api-key"
+      },
+      "scanner_ids": [
+        "gitleaks"
+      ],
+      "secret_redacted": true,
+      "severity": "high"
+    },
+    {
+      "code_flow": null,
+      "confidence": "unknown",
+      "cwe": [],
+      "fingerprint": "a1b2c3d4e5f60007",
+      "location": {
+        "end_line": 3,
+        "path": "app/util.py",
+        "start_line": 3
+      },
+      "message": "assert used in non-test code",
+      "rule_ids": {
+        "bandit": "B101"
+      },
+      "scanner_ids": [
+        "bandit"
+      ],
+      "secret_redacted": false,
+      "severity": "low"
+    },
+    {
+      "code_flow": null,
+      "confidence": "medium",
+      "cwe": [
+        "CWE-319"
+      ],
+      "fingerprint": "a1b2c3d4e5f60008",
+      "location": {
+        "end_line": 18,
+        "path": "app/client.py",
+        "start_line": 18
+      },
+      "message": "HTTP request without TLS",
+      "rule_ids": {
+        "semgrep": "python.requests.security.no-auth-over-http"
+      },
+      "scanner_ids": [
+        "semgrep"
+      ],
+      "secret_redacted": false,
+      "severity": "low"
+    }
+  ],
+  "finished_at": "2026-11-20T12:00:07Z",
+  "gate": {
+    "passed": false,
+    "reasons": [
+      "critical>0",
+      "high>0"
+    ]
+  },
+  "pipeline": "default@sample",
+  "run_id": "00000000-0000-4000-8000-000000000001",
+  "sample": true,
+  "scanners": [
+    {
+      "detail": "",
+      "duration_ms": 820,
+      "files_analyzed": 14,
+      "id": "flowscope",
+      "status": "ok",
+      "version": "sample"
+    },
+    {
+      "detail": "",
+      "duration_ms": 3900,
+      "files_analyzed": 14,
+      "id": "semgrep",
+      "status": "ok",
+      "version": "sample"
+    },
+    {
+      "detail": "",
+      "duration_ms": 610,
+      "files_analyzed": 14,
+      "id": "bandit",
+      "status": "ok",
+      "version": "sample"
+    },
+    {
+      "detail": "",
+      "duration_ms": 240,
+      "files_analyzed": 14,
+      "id": "gitleaks",
+      "status": "ok",
+      "version": "sample"
+    },
+    {
+      "detail": "gosec not installed",
+      "duration_ms": 0,
+      "files_analyzed": null,
+      "id": "gosec",
+      "status": "skipped",
+      "version": null
+    },
+    {
+      "detail": "0 manifests analyzed (not a clean result)",
+      "duration_ms": 90,
+      "files_analyzed": 0,
+      "id": "osv-scanner",
+      "status": "empty",
+      "version": "sample"
+    }
+  ],
+  "schema": "kaleidoscan.run/1",
+  "started_at": "2026-11-20T12:00:00Z",
+  "target": {
+    "git_sha": null,
+    "kind": "repo",
+    "languages": [
+      "python"
+    ],
+    "path": "examples/vulnerable-flask"
+  }
+}
