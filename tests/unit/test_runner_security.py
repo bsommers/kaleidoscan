@@ -144,3 +144,10 @@ def test_stderr_tail_is_bounded_and_redacted():
     r = run_command([PY, "-c", "import sys;sys.stderr.write('x'*10000+' api_key=SECRET123')"], timeout_s=10)
     tail = r.stderr_tail(200)
     assert len(tail) <= 220 and "SECRET123" not in tail
+
+
+@pytest.mark.security
+def test_stderr_tail_strips_ansi_colour_codes():
+    from kaleidoscan.runner import CommandResult
+    r = CommandResult(["x"], 0, b"", b"\x1b[90m8:04AM\x1b[0m \x1b[32mINF\x1b[0m done", False, False, False, 1)
+    assert r.stderr_tail() == "8:04AM INF done"

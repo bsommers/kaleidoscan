@@ -30,6 +30,7 @@ _REDACTIONS = [
     re.compile(r"xox[baprs]-[A-Za-z0-9-]{10,}"),
     re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?(?:-----END [A-Z ]*PRIVATE KEY-----|$)"),
 ]
+_ANSI = re.compile(r"\x1b\[[0-9;?]*[A-Za-z]")
 _KV = re.compile(
     r"(?i)\b([\w.-]*(?:password|passwd|secret|token|api[_-]?key|apikey|auth)[\w.-]*)(\s*[=:]\s*)(\S+)"
 )
@@ -63,7 +64,7 @@ class CommandResult:
 
     def stderr_tail(self, n: int = 500) -> str:
         """Bounded, redacted tail of stderr suitable for ScannerResult.detail."""
-        txt = self.stderr.decode("utf-8", "replace")
+        txt = _ANSI.sub("", self.stderr.decode("utf-8", "replace"))  # tools colour logs even on a pipe
         return redact(txt)[-n:]
 
 

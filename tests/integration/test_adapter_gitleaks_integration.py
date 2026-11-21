@@ -10,7 +10,7 @@ from kaleidoscan.types import ScannerStatus, Target
 
 pytestmark = pytest.mark.integration
 FX = Path(__file__).resolve().parent.parent / "fixtures" / "gitleaks"
-SECRET = "AKIA" + "IOSFODNN7EXAMPLE"
+SECRET = "AKIAQYLPMN5" + "HHHFPZAM2"  # split so repo scans do not flag the test file
 
 
 @pytest.mark.skipif(not resolve_binary()[0], reason="real gitleaks not installed (set GITLEAKS_BIN)")
