@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kaleidoscan</title>
+<meta name="description" content="Composable security testing: many scanners, one normalized SARIF result, ranked views and safe remediation.">
+<meta property="og:title" content="kaleidoscan"><meta property="og:description" content="Many scanners. One ranked result.">
+<meta property="og:type" content="website"><meta property="og:image" content="assets/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+<style>
+:root{--bg:#050811;--cy:#00e5ff;--sky:#38bdf8;--txt:#f0f6fc;--mut:#94a3b8;--panel:#0b1326}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.55 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+background-image:linear-gradient(rgba(0,229,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.1) 1px,transparent 1px);background-size:32px 32px}
+main{max-width:1100px;margin:0 auto;padding:16px}a{color:var(--sky)}h2{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--cy)}
+.hero img{width:100%;height:auto;border:1.5px solid var(--cy);border-radius:10px}
+section{background:rgba(11,19,38,.92);border:1.5px solid var(--cy);border-radius:10px;padding:14px 16px;margin:16px 0}
+.counts{display:flex;gap:12px;flex-wrap:wrap}.counts div{border:1px solid var(--sky);border-radius:8px;padding:6px 12px}.counts b{color:var(--cy);font-size:1.4rem;display:block}
+pre{background:#070d1c;border:1px solid var(--sky);border-radius:8px;padding:10px;overflow-x:auto;color:#5eead4;margin:0}
+button,input,select{background:#070d1c;color:var(--txt);border:1px solid var(--sky);border-radius:6px;padding:6px 10px;font:inherit}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}figure{margin:0}figure img{width:100%;height:auto;border:1px solid var(--sky);border-radius:8px}
+figcaption{color:var(--mut);font-size:.85rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.card{display:block;border:1px solid var(--sky);border-radius:8px;padding:10px;text-decoration:none;background:#070d1c}.card b{display:block;color:var(--cy)}.card span{color:var(--mut);font-size:.9rem}
+table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:4px 8px;border-bottom:1px solid rgba(56,189,248,.25)}.tw{overflow-x:auto}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+@media (prefers-reduced-motion:no-preference){.card{transition:box-shadow .15s}.card:hover{box-shadow:0 0 0 2px var(--cy)}}
+</style></head><body><main>
+<div class="hero"><img src="assets/logo.svg" alt="kaleidoscan hero banner: many scanners, one ranked result"></div>
+<section><p>Composable security testing: run several scanners over one target, normalize everything to SARIF 2.1.0, rank by measured scanner reliability, and gate in local or remote CI. Early development: see <a href="https://github.com/">status</a> in the README for what is implemented.</p>
+<div class="counts" id="counts"><div><b>16</b>scanner adapters (planned)</div><div><b>10</b>views</div><div><b>11</b>pipeline stages</div><div><b>2/18</b>commands implemented</div><div><b>v0.1.0</b>version</div></div>
+<p><a href="examples/visualizer.html">Open the interactive pipeline visualizer (sample run)</a> · <a href="usermanual/README.md">User manual</a></p></section>
+<section><h2>Quickstart</h2>
+<div class="row"><button type="button" data-copy="uv tool install .">copy install</button></div><pre id="q1">uv tool install .
+kaleidoscan doctor
+kaleidoscan viz --sample --out visualizer.html</pre></section>
+<section><h2>Graphics</h2><div class="gallery">
+<figure><a href="assets/examples/architecture-overview.png"><img src="assets/examples/architecture-overview.svg" alt="System architecture: five surfaces over a surface-agnostic core over scanner adapters" loading="lazy"></a><figcaption>System architecture: five surfaces over a surface-agnostic core over scanner adapters</figcaption></figure>
+<figure><a href="assets/examples/pipeline-dataflow.png"><img src="assets/examples/pipeline-dataflow.svg" alt="Pipeline data flow through eleven stages from target to pull request" loading="lazy"></a><figcaption>Pipeline data flow through eleven stages from target to pull request</figcaption></figure>
+<figure><a href="assets/examples/scanner-portfolio.png"><img src="assets/examples/scanner-portfolio.svg" alt="Scanner portfolio table generated from the catalog" loading="lazy"></a><figcaption>Scanner portfolio table generated from the catalog</figcaption></figure>
+<figure><a href="assets/examples/scoring-explainer.png"><img src="assets/examples/scoring-explainer.svg" alt="Noisy-OR finding score with a worked example" loading="lazy"></a><figcaption>Noisy-OR finding score with a worked example</figcaption></figure>
+<figure><a href="assets/examples/views-gallery.png"><img src="assets/examples/views-gallery.svg" alt="The ten result views with sample-run counts" loading="lazy"></a><figcaption>The ten result views with sample-run counts</figcaption></figure>
+<figure><a href="assets/examples/remediation-flow.png"><img src="assets/examples/remediation-flow.svg" alt="Scan, review, plan, remediate with revert loop, and a human-gated PR" loading="lazy"></a><figcaption>Scan, review, plan, remediate with revert loop, and a human-gated PR</figcaption></figure>
+<figure><a href="assets/examples/mcp-forge-pipeline.png"><img src="assets/examples/mcp-forge-pipeline.svg" alt="OpenAPI to Forge to FastMCP server to MCP client" loading="lazy"></a><figcaption>OpenAPI to Forge to FastMCP server to MCP client</figcaption></figure>
+<figure><a href="assets/examples/ci-topology.png"><img src="assets/examples/ci-topology.svg" alt="Local runner and GitHub Actions share one code path" loading="lazy"></a><figcaption>Local runner and GitHub Actions share one code path</figcaption></figure>
+<figure><a href="assets/examples/trust-boundaries.png"><img src="assets/examples/trust-boundaries.svg" alt="Untrusted inputs, boundary controls and trusted core" loading="lazy"></a><figcaption>Untrusted inputs, boundary controls and trusted core</figcaption></figure>
+<figure><a href="assets/examples/visualizer-overview.png"><img src="assets/examples/visualizer-overview.svg" alt="Visualizer: stage strip, scanner fan-out and per-run panels from a sample run" loading="lazy"></a><figcaption>Visualizer: stage strip, scanner fan-out and per-run panels from a sample run</figcaption></figure>
+</div></section>
+<section><h2>Scanner explorer</h2><div class="row"><input id="q" type="search" placeholder="search scanners" aria-label="search scanners">
+<select id="k" aria-label="kind"><option value="">all kinds</option><option>sast</option><option>sca</option><option>secrets</option><option>iac</option></select>
+<select id="t" aria-label="tier"><option value="">all tiers</option><option>baseline</option><option>A</option></select></div>
+<div class="tw"><table><thead><tr><th>id</th><th>kind</th><th>tier</th><th>languages</th><th>license</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section><h2>Documentation</h2><div class="cards">
+<a class="card" href="purpose.md"><b>Purpose</b><span>problem, tenets, threat model</span></a>
+<a class="card" href="architecture.md"><b>Architecture</b><span>layers, adapters, data flow</span></a>
+<a class="card" href="running.md"><b>Running</b><span>install, CLI, exit codes</span></a>
+<a class="card" href="configuration.md"><b>Configuration</b><span>kaleidoscan.yaml reference</span></a>
+<a class="card" href="how-to.md"><b>How-to</b><span>recipes</span></a>
+<a class="card" href="scanners.md"><b>Scanners</b><span>generated catalog</span></a>
+<a class="card" href="views-and-scoring.md"><b>Views and scoring</b><span>noisy-OR, ranking</span></a>
+<a class="card" href="remediation.md"><b>Remediation</b><span>review, plan, fix, PR</span></a>
+<a class="card" href="integrations.md"><b>HTTP, MCP, CI</b><span>surfaces</span></a>
+<a class="card" href="usermanual/README.md"><b>User manual</b><span>guided reading</span></a>
+<a class="card" href="CONTRIBUTING.md"><b>Contributing</b><span>adapters, tests, docs</span></a>
+</div></section>
+<script type="application/json" id="scanners-data">[{"id": "flowscope", "name": "Flowscope", "kind": "sast", "languages": ["python", "javascript", "typescript", "go"], "license": "see upstream", "restricted": false, "tier": "baseline"}, {"id": "semgrep", "name": "Semgrep CE", "kind": "sast", "languages": ["python", "go", "java", "csharp"], "license": "LGPL-2.1 (rule packs vary)", "restricted": false, "tier": "baseline"}, {"id": "bandit", "name": "Bandit", "kind": "sast", "languages": ["python"], "license": "Apache-2.0", "restricted": false, "tier": "baseline"}, {"id": "gosec", "name": "gosec", "kind": "sast", "languages": ["go"], "license": "Apache-2.0", "restricted": false, "tier": "baseline"}, {"id": "flawfinder", "name": "flawfinder", "kind": "sast", "languages": ["c"], "license": "GPL-2.0", "restricted": false, "tier": "baseline"}, {"id": "bearer", "name": "Bearer CLI", "kind": "sast", "languages": ["python", "javascript", "typescript", "ruby", "java", "php", "go"], "license": "see upstream", "restricted": false, "tier": "baseline"}, {"id": "codeql", "name": "CodeQL", "kind": "sast", "languages": ["c", "cpp", "java", "python", "csharp"], "license": "proprietary-restricted", "restricted": true, "tier": "baseline"}, {"id": "ghidra-angr", "name": "Ghidra / angr (binary)", "kind": "sast", "languages": ["binary"], "license": "Apache-2.0 / BSD-2", "restricted": false, "tier": "baseline"}, {"id": "opengrep", "name": "Opengrep", "kind": "sast", "languages": ["*"], "license": "LGPL-2.1", "restricted": false, "tier": "A"}, {"id": "brakeman", "name": "Brakeman", "kind": "sast", "languages": ["ruby"], "license": "see upstream", "restricted": false, "tier": "A"}, {"id": "cppcheck", "name": "cppcheck", "kind": "sast", "languages": ["c", "cpp"], "license": "GPL-3.0", "restricted": false, "tier": "A"}, {"id": "gitleaks", "name": "Gitleaks", "kind": "secrets", "languages": ["*"], "license": "MIT", "restricted": false, "tier": "A"}, {"id": "osv-scanner", "name": "OSV-Scanner", "kind": "sca", "languages": ["*"], "license": "Apache-2.0", "restricted": false, "tier": "A"}, {"id": "trivy", "name": "Trivy (pinned)", "kind": "sca", "languages": ["*"], "license": "Apache-2.0", "restricted": false, "tier": "A"}, {"id": "checkov", "name": "Checkov", "kind": "iac", "languages": ["terraform", "kubernetes", "docker"], "license": "Apache-2.0", "restricted": false, "tier": "A"}, {"id": "kics", "name": "KICS", "kind": "iac", "languages": ["terraform", "kubernetes", "docker"], "license": "Apache-2.0", "restricted": false, "tier": "A"}]</script>
+<script>
+(function(){var S=JSON.parse(document.getElementById('scanners-data').textContent),tb=document.getElementById('rows');
+function draw(){var q=document.getElementById('q').value.toLowerCase(),k=document.getElementById('k').value,t=document.getElementById('t').value;tb.textContent='';
+S.forEach(function(s){var txt=(s.id+' '+s.name+' '+s.languages.join(' ')+' '+s.license).toLowerCase();
+if((q&&txt.indexOf(q)<0)||(k&&s.kind!==k)||(t&&s.tier!==t))return;var tr=document.createElement('tr');
+[s.id,s.kind,s.tier,s.languages.join(', '),s.license+(s.restricted?' [restricted]':'')].forEach(function(v){var td=document.createElement('td');td.textContent=v;tr.appendChild(td)});tb.appendChild(tr)})}
+['q','k','t'].forEach(function(i){document.getElementById(i).addEventListener('input',draw)});draw();
+document.querySelectorAll('button[data-copy]').forEach(function(b){b.addEventListener('click',function(){if(navigator.clipboard)navigator.clipboard.writeText(b.dataset.copy)})});})();
+</script></main></body></html>

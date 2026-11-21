@@ -1,0 +1,298 @@
+{
+  "commands": [
+    {
+      "name": "doctor",
+      "status": "implemented"
+    },
+    {
+      "name": "viz",
+      "status": "implemented"
+    },
+    {
+      "name": "scanners",
+      "status": "planned"
+    },
+    {
+      "name": "run",
+      "status": "planned"
+    },
+    {
+      "name": "show",
+      "status": "planned"
+    },
+    {
+      "name": "findings",
+      "status": "planned"
+    },
+    {
+      "name": "report",
+      "status": "planned"
+    },
+    {
+      "name": "diff",
+      "status": "planned"
+    },
+    {
+      "name": "gate",
+      "status": "planned"
+    },
+    {
+      "name": "serve",
+      "status": "planned"
+    },
+    {
+      "name": "select",
+      "status": "planned"
+    },
+    {
+      "name": "bench",
+      "status": "planned"
+    },
+    {
+      "name": "review",
+      "status": "planned"
+    },
+    {
+      "name": "plan",
+      "status": "planned"
+    },
+    {
+      "name": "remediate",
+      "status": "planned"
+    },
+    {
+      "name": "open-pr",
+      "status": "planned"
+    },
+    {
+      "name": "fix",
+      "status": "planned"
+    },
+    {
+      "name": "gaps",
+      "status": "planned"
+    }
+  ],
+  "counts": {
+    "commands": 18,
+    "commands_implemented": 2,
+    "scanners": 16,
+    "scanners_baseline": 8,
+    "scanners_restricted": 1,
+    "scanners_tier_a": 8,
+    "stages": 11,
+    "views": 10
+  },
+  "scanners": [
+    {
+      "id": "flowscope",
+      "kind": "sast",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript",
+        "go"
+      ],
+      "license": "see upstream",
+      "name": "Flowscope",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "semgrep",
+      "kind": "sast",
+      "languages": [
+        "python",
+        "go",
+        "java",
+        "csharp"
+      ],
+      "license": "LGPL-2.1 (rule packs vary)",
+      "name": "Semgrep CE",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "bandit",
+      "kind": "sast",
+      "languages": [
+        "python"
+      ],
+      "license": "Apache-2.0",
+      "name": "Bandit",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "gosec",
+      "kind": "sast",
+      "languages": [
+        "go"
+      ],
+      "license": "Apache-2.0",
+      "name": "gosec",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "flawfinder",
+      "kind": "sast",
+      "languages": [
+        "c"
+      ],
+      "license": "GPL-2.0",
+      "name": "flawfinder",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "bearer",
+      "kind": "sast",
+      "languages": [
+        "python",
+        "javascript",
+        "typescript",
+        "ruby",
+        "java",
+        "php",
+        "go"
+      ],
+      "license": "see upstream",
+      "name": "Bearer CLI",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "codeql",
+      "kind": "sast",
+      "languages": [
+        "c",
+        "cpp",
+        "java",
+        "python",
+        "csharp"
+      ],
+      "license": "proprietary-restricted",
+      "name": "CodeQL",
+      "restricted": true,
+      "tier": "baseline"
+    },
+    {
+      "id": "ghidra-angr",
+      "kind": "sast",
+      "languages": [
+        "binary"
+      ],
+      "license": "Apache-2.0 / BSD-2",
+      "name": "Ghidra / angr (binary)",
+      "restricted": false,
+      "tier": "baseline"
+    },
+    {
+      "id": "opengrep",
+      "kind": "sast",
+      "languages": [
+        "*"
+      ],
+      "license": "LGPL-2.1",
+      "name": "Opengrep",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "brakeman",
+      "kind": "sast",
+      "languages": [
+        "ruby"
+      ],
+      "license": "see upstream",
+      "name": "Brakeman",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "cppcheck",
+      "kind": "sast",
+      "languages": [
+        "c",
+        "cpp"
+      ],
+      "license": "GPL-3.0",
+      "name": "cppcheck",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "gitleaks",
+      "kind": "secrets",
+      "languages": [
+        "*"
+      ],
+      "license": "MIT",
+      "name": "Gitleaks",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "osv-scanner",
+      "kind": "sca",
+      "languages": [
+        "*"
+      ],
+      "license": "Apache-2.0",
+      "name": "OSV-Scanner",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "trivy",
+      "kind": "sca",
+      "languages": [
+        "*"
+      ],
+      "license": "Apache-2.0",
+      "name": "Trivy (pinned)",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "checkov",
+      "kind": "iac",
+      "languages": [
+        "terraform",
+        "kubernetes",
+        "docker"
+      ],
+      "license": "Apache-2.0",
+      "name": "Checkov",
+      "restricted": false,
+      "tier": "A"
+    },
+    {
+      "id": "kics",
+      "kind": "iac",
+      "languages": [
+        "terraform",
+        "kubernetes",
+        "docker"
+      ],
+      "license": "Apache-2.0",
+      "name": "KICS",
+      "restricted": false,
+      "tier": "A"
+    }
+  ],
+  "version": "0.1.0",
+  "views": [
+    "by-scanner",
+    "consensus",
+    "unique",
+    "disagreement",
+    "by-taxonomy",
+    "by-category",
+    "ranked",
+    "new-vs-baseline",
+    "taint-flows",
+    "coverage"
+  ]
+}
