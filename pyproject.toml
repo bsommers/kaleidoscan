@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kaleidoscan"
+dynamic = ["version"]
+description = "Composable security-testing pipeline: many scanners, one normalized SARIF result, ranked views."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+kaleidoscan = "kaleidoscan.cli:main"
+kscan = "kaleidoscan.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.hatch.version]
+path = "kaleidoscan/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["kaleidoscan"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+  "smoke: <10s, no scanners needed",
+  "unit: unit tests",
+  "integration: real scanners if installed, else skipped with explicit SKIP",
+  "system: end-to-end CLI/HTTP/MCP",
+  "perf: performance",
+  "stress: stress",
+  "torture: torture",
+  "security: trust-boundary tests",
+]
