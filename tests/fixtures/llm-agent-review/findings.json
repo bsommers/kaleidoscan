@@ -1,0 +1,5 @@
+{"findings": [
+ {"file": "app/db.py", "line": 42, "cwe": "CWE-89", "message": "SQL built by string concatenation; api_key=sk-abcdefghijklmnopqrstuvwx leaked in comment"},
+ {"filename": "app/views.py", "start_line": 7, "type": "reflected XSS (CWE-79)", "title": "Unescaped user input in template"},
+ "ignored string", {"file": "", "cwe": "CWE-22"}
+], "usage": {"input_tokens": 1200, "output_tokens": 300, "cost": 0.5, "duration_seconds": 12.5}}

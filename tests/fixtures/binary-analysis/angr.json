@@ -1,0 +1,4 @@
+{"vulnerabilities": [
+ {"bug_type": "CWE-119", "binary": "server.elf", "source_line": 142, "details": "unconstrained symbolic state: PC controllable at 0x401f5a"},
+ {"cwe_id": "CWE-416", "source": "server.elf", "address_offset": "0x402010", "error": "use after free of heap chunk"}
+]}
