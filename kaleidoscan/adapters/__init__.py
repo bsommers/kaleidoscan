@@ -3,9 +3,19 @@ from __future__ import annotations
 
 from importlib.metadata import entry_points
 
+from kaleidoscan.adapters.agent_ingest import AgentIngestAdapter
+from kaleidoscan.adapters.bandit import BanditAdapter
+from kaleidoscan.adapters.bearer import BearerAdapter
+from kaleidoscan.adapters.binary_ingest import BinaryIngestAdapter
+from kaleidoscan.adapters.codeql import CodeqlAdapter
+from kaleidoscan.adapters.flawfinder import FlawfinderAdapter
 from kaleidoscan.adapters.flowscope import FlowscopeAdapter
+from kaleidoscan.adapters.gosec import GosecAdapter
+from kaleidoscan.adapters.semgrep import SemgrepAdapter
 
-BUILTIN = {"flowscope": FlowscopeAdapter}
+BUILTIN = {a.info.id: a for a in (
+    FlowscopeAdapter, SemgrepAdapter, BanditAdapter, GosecAdapter, FlawfinderAdapter,
+    BearerAdapter, CodeqlAdapter, BinaryIngestAdapter, AgentIngestAdapter)}
 
 
 def registry() -> dict[str, type]:
