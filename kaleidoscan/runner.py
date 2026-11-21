@@ -184,7 +184,7 @@ class _Fallback:
 
 def _make_result(scanner_id: str, status: str, detail: str, duration_ms: int = 0):
     try:
-        from kaleidoscan.adapters.base import ScannerResult, ScannerStatus  # type: ignore
+        from kaleidoscan.types import ScannerResult, ScannerStatus
 
         return ScannerResult(scanner_id=scanner_id, status=ScannerStatus(status), version=None,
                              files_analyzed=None, sarif=None, duration_ms=duration_ms, detail=detail)
