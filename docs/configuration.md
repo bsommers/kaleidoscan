@@ -1,6 +1,6 @@
 # Configuration: `kaleidoscan.yaml` (C4)
 
-Status: **planned** (Task 1). This is the contract the loader will validate with pydantic; unknown keys are rejected.
+Status: **implemented** (`kaleidoscan/config.py`, Task 1). Validated with pydantic; unknown keys are rejected. The `run` command that consumes it is still planned.
 
 ```yaml
 version: 1
@@ -31,6 +31,14 @@ limits: {timeout_s: 600, max_output_mb: 64, max_parallel: 4}
 | `reports` | output formats |
 | `limits` | per-scanner timeout, output cap, parallelism |
 
-Profiles: `--profile fast|full|ci` override the above. Severity mapping (C6): SARIF `security-severity` >= 9.0 critical,
+Validation rules: scanner ids must exist in the catalog and be unique; `policy.require_scanners` must name enabled
+scanners; `severity_at_least` is one of critical/high/medium/low/info; limits must be positive integers; any non-null
+`dynamic:` fails with "dynamic testing not implemented". Errors are raised as `ConfigError` (CLI exit code 2) and name
+the offending key path. Relative paths (`target.path`, `baseline`, `suppressions`, scanner `offline_rules`) resolve
+against the config file's directory. `Pipeline.pipeline_id()` returns `name@hash` for the run envelope.
+
+Profiles: `--profile fast|full|ci` override the above: `fast` keeps only Flowscope, Bandit, gosec, Semgrep, Opengrep and
+Gitleaks and caps `timeout_s` at 120; `full` enables every listed scanner; `ci` sets `new_only: true` and reports
+`[sarif, junit, json]`. A profile never adds scanners the file does not list. Severity mapping (C6): SARIF `security-severity` >= 9.0 critical,
 >= 7.0 high, >= 4.0 medium, > 0 low; otherwise error=high, warning=medium, note=low, none=info; unknown maps to medium with
 `confidence: unknown`.
