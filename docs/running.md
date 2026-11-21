@@ -59,3 +59,7 @@ Global flag: `--version`. With `--json`, stdout carries only JSON and logs go to
 
 `scripts/verify.sh` runs `smoke`, `unit`, `integration`, `system`, `security` (and `perf`, `stress`, `torture` with `--all`).
 Output: `<tier>: PASS n / SKIP m / FAIL k`, followed by every skip reason. A skip never counts as green silently.
+
+## Documentation site
+
+`uv run python scripts/build-site.py --out _site` builds the Pages site locally (needs the pinned dev dependency `markdown`); open `_site/index.html`. See [CONTRIBUTING.md](CONTRIBUTING.md).

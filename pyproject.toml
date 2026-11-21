@@ -16,7 +16,10 @@ kaleidoscan = "kaleidoscan.cli:main"
 kscan = "kaleidoscan.cli:main"
 
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "markdown==3.7",
+    "pytest>=8",
+]
 
 [tool.hatch.version]
 path = "kaleidoscan/__init__.py"

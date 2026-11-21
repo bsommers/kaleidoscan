@@ -47,7 +47,7 @@ Start at the [docs hub](docs/README.md) or the [user manual](docs/usermanual/REA
 [Configuration](docs/configuration.md) · [How-to](docs/how-to.md) · [Scanners](docs/scanners.md) ·
 [Views and scoring](docs/views-and-scoring.md) · [Remediation](docs/remediation.md) · [HTTP, MCP and CI](docs/integrations.md) ·
 [Visualizer](docs/visualizer.md) · [Contributing](docs/CONTRIBUTING.md) · [Changelog](docs/CHANGELOG.md).
-The GitHub Pages site lives in [docs/index.html](docs/index.html) (not yet published).
+The GitHub Pages site (<https://bsommers.github.io/kaleidoscan/>) is built from `docs/` by `scripts/build-site.py`; its landing page source is [docs/index.html](docs/index.html).
 
 ## Verify
 

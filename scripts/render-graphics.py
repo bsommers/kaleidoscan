@@ -9,7 +9,7 @@ Writes (relative to --root, default repo root):
   docs/assets/examples/*.{svg,png}       diagrams (counts from kaleidoscan.catalog + sample run)
   docs/scanners.md, docs/data.json       generated catalog + derived counts
   docs/examples/visualizer.html          sample-run visualizer
-  docs/index.html                        GitHub Pages landing page
+  docs/index.html                        GitHub Pages landing page (links point at the .html pages built by build-site.py)
 Usage: render-graphics.py [--root DIR] [--no-png]
 No network, no timestamps, no randomness: running twice yields byte-identical SVG/HTML/MD/JSON.
 """
@@ -368,12 +368,12 @@ def data_json():
 def index_html():
     c = catalog.counts()
     data = json.dumps([dict(zip(("id", "name", "kind", "languages", "license", "restricted", "tier"), s)) for s in catalog.SCANNERS]).replace("<", "\\u003c")
-    cards = [("purpose.md", "Purpose", "problem, tenets, threat model"), ("architecture.md", "Architecture", "layers, adapters, data flow"),
-             ("running.md", "Running", "install, CLI, exit codes"), ("configuration.md", "Configuration", "kaleidoscan.yaml reference"),
-             ("how-to.md", "How-to", "recipes"), ("scanners.md", "Scanners", "generated catalog"),
-             ("views-and-scoring.md", "Views and scoring", "noisy-OR, ranking"), ("remediation.md", "Remediation", "review, plan, fix, PR"),
-             ("integrations.md", "HTTP, MCP, CI", "surfaces"), ("usermanual/README.md", "User manual", "guided reading"),
-             ("CONTRIBUTING.md", "Contributing", "adapters, tests, docs")]
+    cards = [("purpose.html", "Purpose", "problem, tenets, threat model"), ("architecture.html", "Architecture", "layers, adapters, data flow"),
+             ("running.html", "Running", "install, CLI, exit codes"), ("configuration.html", "Configuration", "kaleidoscan.yaml reference"),
+             ("how-to.html", "How-to", "recipes"), ("scanners.html", "Scanners", "generated catalog"),
+             ("views-and-scoring.html", "Views and scoring", "noisy-OR, ranking"), ("remediation.html", "Remediation", "review, plan, fix, PR"),
+             ("integrations.html", "HTTP, MCP, CI", "surfaces"), ("usermanual/README.html", "User manual", "guided reading"),
+             ("CONTRIBUTING.html", "Contributing", "adapters, tests, docs")]
     cardhtml = "\n".join(f'<a class="card" href="{h}"><b>{t}</b><span>{d}</span></a>' for h, t, d in cards)
     gal = "\n".join(f'<figure><a href="assets/examples/{n}.png"><img src="assets/examples/{n}.svg" alt="{esc(ALT[n])}" loading="lazy"></a><figcaption>{esc(ALT[n])}</figcaption></figure>' for n in DIAGRAMS)
     return f"""<!doctype html>
@@ -402,9 +402,9 @@ table{{border-collapse:collapse;width:100%}}th,td{{text-align:left;padding:4px 8
 @media (prefers-reduced-motion:no-preference){{.card{{transition:box-shadow .15s}}.card:hover{{box-shadow:0 0 0 2px var(--cy)}}}}
 </style></head><body><main>
 <div class="hero"><img src="assets/logo.svg" alt="kaleidoscan hero banner: many scanners, one ranked result"></div>
-<section><p>Composable security testing: run several scanners over one target, normalize everything to SARIF 2.1.0, rank by measured scanner reliability, and gate in local or remote CI. Early development: see <a href="https://github.com/">status</a> in the README for what is implemented.</p>
+<section><p>Composable security testing: run several scanners over one target, normalize everything to SARIF 2.1.0, rank by measured scanner reliability, and gate in local or remote CI. Early development: see <a href="https://github.com/bsommers/kaleidoscan">status</a> in the README for what is implemented.</p>
 <div class="counts" id="counts"><div><b>{c['scanners']}</b>scanner adapters (planned)</div><div><b>{c['views']}</b>views</div><div><b>{c['stages']}</b>pipeline stages</div><div><b>{c['commands_implemented']}/{c['commands']}</b>commands implemented</div><div><b>v{__version__}</b>version</div></div>
-<p><a href="examples/visualizer.html">Open the interactive pipeline visualizer (sample run)</a> · <a href="usermanual/README.md">User manual</a></p></section>
+<p><a href="examples/visualizer.html">Open the interactive pipeline visualizer (sample run)</a> · <a href="usermanual/README.html">User manual</a></p></section>
 <section><h2>Quickstart</h2>
 <div class="row"><button type="button" data-copy="uv tool install .">copy install</button></div><pre id="q1">uv tool install .
 kaleidoscan doctor

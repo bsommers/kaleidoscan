@@ -24,9 +24,9 @@ table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:4px 8px;
 @media (prefers-reduced-motion:no-preference){.card{transition:box-shadow .15s}.card:hover{box-shadow:0 0 0 2px var(--cy)}}
 </style></head><body><main>
 <div class="hero"><img src="assets/logo.svg" alt="kaleidoscan hero banner: many scanners, one ranked result"></div>
-<section><p>Composable security testing: run several scanners over one target, normalize everything to SARIF 2.1.0, rank by measured scanner reliability, and gate in local or remote CI. Early development: see <a href="https://github.com/">status</a> in the README for what is implemented.</p>
+<section><p>Composable security testing: run several scanners over one target, normalize everything to SARIF 2.1.0, rank by measured scanner reliability, and gate in local or remote CI. Early development: see <a href="https://github.com/bsommers/kaleidoscan">status</a> in the README for what is implemented.</p>
 <div class="counts" id="counts"><div><b>16</b>scanner adapters (planned)</div><div><b>10</b>views</div><div><b>11</b>pipeline stages</div><div><b>2/18</b>commands implemented</div><div><b>v0.1.0</b>version</div></div>
-<p><a href="examples/visualizer.html">Open the interactive pipeline visualizer (sample run)</a> · <a href="usermanual/README.md">User manual</a></p></section>
+<p><a href="examples/visualizer.html">Open the interactive pipeline visualizer (sample run)</a> · <a href="usermanual/README.html">User manual</a></p></section>
 <section><h2>Quickstart</h2>
 <div class="row"><button type="button" data-copy="uv tool install .">copy install</button></div><pre id="q1">uv tool install .
 kaleidoscan doctor
@@ -48,17 +48,17 @@ kaleidoscan viz --sample --out visualizer.html</pre></section>
 <select id="t" aria-label="tier"><option value="">all tiers</option><option>baseline</option><option>A</option></select></div>
 <div class="tw"><table><thead><tr><th>id</th><th>kind</th><th>tier</th><th>languages</th><th>license</th></tr></thead><tbody id="rows"></tbody></table></div></section>
 <section><h2>Documentation</h2><div class="cards">
-<a class="card" href="purpose.md"><b>Purpose</b><span>problem, tenets, threat model</span></a>
-<a class="card" href="architecture.md"><b>Architecture</b><span>layers, adapters, data flow</span></a>
-<a class="card" href="running.md"><b>Running</b><span>install, CLI, exit codes</span></a>
-<a class="card" href="configuration.md"><b>Configuration</b><span>kaleidoscan.yaml reference</span></a>
-<a class="card" href="how-to.md"><b>How-to</b><span>recipes</span></a>
-<a class="card" href="scanners.md"><b>Scanners</b><span>generated catalog</span></a>
-<a class="card" href="views-and-scoring.md"><b>Views and scoring</b><span>noisy-OR, ranking</span></a>
-<a class="card" href="remediation.md"><b>Remediation</b><span>review, plan, fix, PR</span></a>
-<a class="card" href="integrations.md"><b>HTTP, MCP, CI</b><span>surfaces</span></a>
-<a class="card" href="usermanual/README.md"><b>User manual</b><span>guided reading</span></a>
-<a class="card" href="CONTRIBUTING.md"><b>Contributing</b><span>adapters, tests, docs</span></a>
+<a class="card" href="purpose.html"><b>Purpose</b><span>problem, tenets, threat model</span></a>
+<a class="card" href="architecture.html"><b>Architecture</b><span>layers, adapters, data flow</span></a>
+<a class="card" href="running.html"><b>Running</b><span>install, CLI, exit codes</span></a>
+<a class="card" href="configuration.html"><b>Configuration</b><span>kaleidoscan.yaml reference</span></a>
+<a class="card" href="how-to.html"><b>How-to</b><span>recipes</span></a>
+<a class="card" href="scanners.html"><b>Scanners</b><span>generated catalog</span></a>
+<a class="card" href="views-and-scoring.html"><b>Views and scoring</b><span>noisy-OR, ranking</span></a>
+<a class="card" href="remediation.html"><b>Remediation</b><span>review, plan, fix, PR</span></a>
+<a class="card" href="integrations.html"><b>HTTP, MCP, CI</b><span>surfaces</span></a>
+<a class="card" href="usermanual/README.html"><b>User manual</b><span>guided reading</span></a>
+<a class="card" href="CONTRIBUTING.html"><b>Contributing</b><span>adapters, tests, docs</span></a>
 </div></section>
 <script type="application/json" id="scanners-data">[{"id": "flowscope", "name": "Flowscope", "kind": "sast", "languages": ["python", "javascript", "typescript", "go"], "license": "see upstream", "restricted": false, "tier": "baseline"}, {"id": "semgrep", "name": "Semgrep CE", "kind": "sast", "languages": ["python", "go", "java", "csharp"], "license": "LGPL-2.1 (rule packs vary)", "restricted": false, "tier": "baseline"}, {"id": "bandit", "name": "Bandit", "kind": "sast", "languages": ["python"], "license": "Apache-2.0", "restricted": false, "tier": "baseline"}, {"id": "gosec", "name": "gosec", "kind": "sast", "languages": ["go"], "license": "Apache-2.0", "restricted": false, "tier": "baseline"}, {"id": "flawfinder", "name": "flawfinder", "kind": "sast", "languages": ["c"], "license": "GPL-2.0", "restricted": false, "tier": "baseline"}, {"id": "bearer", "name": "Bearer CLI", "kind": "sast", "languages": ["python", "javascript", "typescript", "ruby", "java", "php", "go"], "license": "see upstream", "restricted": false, "tier": "baseline"}, {"id": "codeql", "name": "CodeQL", "kind": "sast", "languages": ["c", "cpp", "java", "python", "csharp"], "license": "proprietary-restricted", "restricted": true, "tier": "baseline"}, {"id": "ghidra-angr", "name": "Ghidra / angr (binary)", "kind": "sast", "languages": ["binary"], "license": "Apache-2.0 / BSD-2", "restricted": false, "tier": "baseline"}, {"id": "opengrep", "name": "Opengrep", "kind": "sast", "languages": ["*"], "license": "LGPL-2.1", "restricted": false, "tier": "A"}, {"id": "brakeman", "name": "Brakeman", "kind": "sast", "languages": ["ruby"], "license": "see upstream", "restricted": false, "tier": "A"}, {"id": "cppcheck", "name": "cppcheck", "kind": "sast", "languages": ["c", "cpp"], "license": "GPL-3.0", "restricted": false, "tier": "A"}, {"id": "gitleaks", "name": "Gitleaks", "kind": "secrets", "languages": ["*"], "license": "MIT", "restricted": false, "tier": "A"}, {"id": "osv-scanner", "name": "OSV-Scanner", "kind": "sca", "languages": ["*"], "license": "Apache-2.0", "restricted": false, "tier": "A"}, {"id": "trivy", "name": "Trivy (pinned)", "kind": "sca", "languages": ["*"], "license": "Apache-2.0", "restricted": false, "tier": "A"}, {"id": "checkov", "name": "Checkov", "kind": "iac", "languages": ["terraform", "kubernetes", "docker"], "license": "Apache-2.0", "restricted": false, "tier": "A"}, {"id": "kics", "name": "KICS", "kind": "iac", "languages": ["terraform", "kubernetes", "docker"], "license": "Apache-2.0", "restricted": false, "tier": "A"}]</script>
 <script>

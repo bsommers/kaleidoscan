@@ -50,7 +50,9 @@ def test_html_relative_refs_resolve():
         for m in re.findall(r'(?:src|href)="([^"]+)"', f.read_text()):
             if re.match(r"[a-z]+:", m) or m.startswith("#"):
                 continue
-            if not (f.parent / m.split("#")[0]).exists():
+            tgt = f.parent / m.split("#")[0]
+            # site pages are built from .md sources by scripts/build-site.py
+            if not (tgt.exists() or (tgt.suffix == ".html" and tgt.with_suffix(".md").exists())):
                 bad.append(f"{f.name} -> {m}")
     assert bad == []
 
