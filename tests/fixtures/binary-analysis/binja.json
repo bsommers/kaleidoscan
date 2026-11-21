@@ -1,0 +1,4 @@
+{"tags": [
+ {"name": "CWE-787", "file_path": "firmware.bndb", "hlil_line": 31, "comment": "unchecked index write in sub_8004f0"},
+ {"tag": "CWE-190", "module": "firmware.bndb", "line": 7, "data": "integer overflow before allocation"}
+]}

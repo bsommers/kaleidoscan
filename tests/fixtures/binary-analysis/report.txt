@@ -1,0 +1,3 @@
+decompiled/vuln.s:12: [CWE-121] stack buffer overflow in main
+not a finding line
+decompiled/vuln.s:40: indirect call through attacker data

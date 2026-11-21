@@ -1,0 +1,2 @@
+- src/exec.py:31 - CWE-078 command injection via os.system
+Nothing else of note.

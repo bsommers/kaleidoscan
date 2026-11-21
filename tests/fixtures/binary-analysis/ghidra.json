@@ -1,0 +1,4 @@
+{"findings": [
+ {"cwe": "CWE-120", "file": "parse_hdr.c", "line": 88, "message": "strcpy into fixed 64-byte stack buffer in FUN_00401a30"},
+ {"rule_id": "buffer overflow CWE_787", "function_name": "FUN_004022b0", "address_offset": "0x4022b0", "description": "memcpy length derived from untrusted header"}
+]}
